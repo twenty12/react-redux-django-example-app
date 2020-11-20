@@ -13,4 +13,6 @@ class User(models.Model):
     last_name = models.CharField(max_length=220, blank=True, null=True)
     account = models.ForeignKey(
         Account,
+        null=True,
+        blank=True,
         on_delete=models.CASCADE)
