@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/create-user">
+            <CreateUser />
+          </Route>
+          <Route path="/update-user/:id">
+            <UpdateUser />
+          </Route>
+          <Route path="/accounts">
+            <Accounts />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function CreateUser() {
+  return (
+    <div>
+      <h2>Create user here</h2>
     </div>
   );
 }
 
-export default App;
+function UpdateUser() {
+  let { id } = useParams();
+  return (
+    <div>
+      <h2>Update user here {id}</h2>
+    </div>
+  );
+}
+
+function Accounts() {
+  return (
+    <div>
+      <h2>Accounts page here </h2>
+    </div>
+  );
+}
