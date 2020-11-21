@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import styles from "./user.module.css";
+import { useHistory } from "react-router-dom";
 
 export function CreateUser() {
+
+  let history = useHistory();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    history.push("/update-user");
+  };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className={styles.row}>
         <h1>Create your user</h1>
       </div>
@@ -16,8 +24,8 @@ export function CreateUser() {
         />
       </div>
       <div className={styles.row}>
-        <button className={styles.asyncButton}>Next</button>
+        <input className={styles.asyncButton} type="submit" value="Next" />
       </div>
-    </div>
+    </form>
   );
 }
